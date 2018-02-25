@@ -1,0 +1,51 @@
+init c_tru = true~
+init c_fal = false~
+init zucc = true~
+init bug23ra12 = false~ 
+output(zucc)~
+zucc = false~
+output(zucc)~
+output(zucc | c_fal)~
+output(zucc | false & c_tru)~
+output(!zucc)~
+
+define f_trueCheck(a)
+begin
+return a==true
+end~
+
+zucc = true~
+
+while(zucc) do
+output(f_trueCheck(zucc))~
+zucc=false
+end~
+
+input(mahmut = true)~
+output(f_trueCheck(zucc))~
+
+if(zucc) then
+zucc = (!(zucc&true)==!c_fal)
+end~
+
+/* sodaspdkap if init )()()( */
+
+if(!f_trueCheck(false)) then
+output((f_trueCheck(((!((!false)))))))~
+zucc = c_fal()
+else if (true) then
+output(false)
+else
+output(true)
+end~
+
+define f_or(k,kk)
+begin
+if(false) begin
+output(false)
+end~
+kkk=k | kk
+return kkk
+end~
+
+output(f_or(true,true))

@@ -1,0 +1,70 @@
+main{
+init c_tru = true~
+init c_fal = false~
+init zucc = true~
+init bug23ra12 = false~ 
+
+init a_example_array = (true,p_istrue(false),(true|false))~
+
+
+if(a_example_array[1]) then
+     output(true)
+end~
+
+
+a_example_array[0] = false~
+
+output(zucc)~
+zucc = false~
+output(zucc)~
+
+output(zucc | c_fal)~
+output(zucc | false & c_tru)~
+output(!zucc)~
+
+define p_trueCheck(a) begin
+	return a==true
+end~
+
+zucc = true~
+
+while(zucc) do
+output(p_trueCheck(zucc))~
+zucc=false
+end~
+
+output(p_trueCheck(zucc))~
+
+if(zucc) then
+zucc = (!(zucc&true)==!c_fal)
+end~
+
+/* sodaspdkap if init )()()( */
+
+if(!p_trueCheck(false)) then
+	output((p_trueCheck(((!((!false)))))))~
+	zucc = c_fal
+else
+	if (true) then
+		output(false)
+	else
+		output(true)
+	end
+end~
+
+define p_or(k,kk)
+begin
+if(false) then
+output(false)
+end~
+kkk=k | kk
+return kkk
+end~
+
+output(p_or(true,true))
+
+
+
+
+
+}
